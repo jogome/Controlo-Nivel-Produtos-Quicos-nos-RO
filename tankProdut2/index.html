@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <title>Nivel Produtos</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="scripts.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!--script type="text/javascript" src="scripts.js"></script-->
 </head>
 <body>
 
@@ -13,25 +14,98 @@
 	<h1><span class="mainHeader">Controlo</span> de Produto Quimico</h1>
 </header>
 
-
 <section class="genesys column">
-  	<h1>Genesys</h1>
-  	<div class="inputs">
-		<input type="text" id="niv" placeholder="Digite o nivel" />
-		<input type="button" value="Genesys" onclick="display();">
+	<div class="section-group">
+		<h1 class="produto">Genesys</h1>
+		<form class="inputs" id="chemicalsInputs">
+			<label><input type="radio" name="produtname" id="genesys" value="genesys" checked="checked">Gen</label> 
+			<label><input type="radio" name="produtname" id="carbonato" value="carbonato">Carb<label>
+			<input type="text" id="niv" placeholder="Digite o nivel" />
+			<input type="button" class="calculate-prod"value="Calculate" onclick="selectProduct();">
+		</form>
   	</div>
-  	<p id="show">Digite o valor do nivel do tanque em cm na caixa de texto acima e prima o botão "Genesys"</p>
-</section>
-
-<section class="carbonato column">
-  <h1>Carbonato</h1>
-    <div class="inputs">
-		<input type="text" id="carb" placeholder="Digite o nivel" />
-		<input type="button" value="Carbonato" onclick="nivelCarbonato();">
-  	</div>
-  <p id="show2">Digite o valor do nivel do tanque em cm na caixa de texto acima e prima o botão "Carbonato"</p>
+  	<p id="show">Digite o valor do nivel do tanque em cm na caixa de texto acima e prima o botão "Calculate"</p>
 </section>
 
 </main>
+
+
+<script>
+	
+var genesys = true;
+var carbonato;
+
+ $("input#genesys").on("click", function() {
+	 console.log("You clicked me so I'm checked and carbonato is uncheked");
+	 genesys = true;
+	 carbonato = false;
+	 $("h1.produto").text("Genesys");
+ });
+  
+ $("input#carbonato").on("click", function() {
+	 console.log("You clicked me so I'm checked and genesys is unchecked");
+	 genesys = false;
+	 carbonato = true;
+	 $("h1.produto").text("Carbonato");
+ });
+  
+  console.log ("genesys = "+ genesys);
+  console.log ("carbonato = "+ carbonato);
+
+
+function Produtos(tipo, perimetro) {
+    //this.unidade = unidade;
+    this.tipo = tipo;
+    this.perimetro = perimetro / 100;
+    //this.nivel = nivel;
+    this.getRadius = function() {
+        var raio = (this.perimetro / Math.PI) / 2;
+        //return "O raio do depósito é: " + raio;
+        return raio;
+    };
+    this.volume = function(nivel) {
+        // In meters
+        var altura = nivel / 100;
+        // Cubical meters
+        var vol = Math.PI * Math.pow(this.getRadius(), 2) * altura;
+        var vol_liters = vol.toFixed(3) * 1000;
+        // In Liters
+        return "O recipiente contém " + vol_liters + " litros de " + this.tipo;
+    };
+    
+}
+var genesysTank = new Produtos("Genesys", 200);
+
+var carbonateTank = new Produtos("Carbonato de Calcio", 239);
+
+
+
+function selectProduct() {
+	console.log("GENESYS "+genesys);
+	console.log("CARBONATO "+carbonato);
+	if(genesys == true) {
+		var display = function(nivel_prod) {
+		  nivel_prod = document.getElementById("niv").value;
+		  nivel_prod = Number(nivel_prod);
+		  var resultado = document.getElementById("show");
+		  //genesysTank.volume(nivel);
+		  resultado.innerHTML = genesysTank.volume(nivel_prod);
+		};
+		display();
+	}
+	else if(carbonato == true) {
+
+		var nivelCarbonato = function(nivel_prod) {
+			//Nivel carbonato de calcio;
+			nivel_carbonato = document.getElementById("niv").value;
+			var resulCarbonato = document.getElementById("show");
+			resulCarbonato.innerHTML = carbonateTank.volume(nivel_carbonato);
+		};
+		nivelCarbonato();
+	}
+}
+
+</script>
+
 </body>
 </html>
