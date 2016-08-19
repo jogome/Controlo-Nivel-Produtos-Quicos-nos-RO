@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Nivel Produtos</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="scripts.js"></script>
+</head>
+<body>
+<main class="row">
+
+<section class="genesys column"">
+  	<h1>Nivel de Genesys</h1>
+  	<input type="text" id="niv" placeholder="Digite o nivel" />
+  	<button onclick="display();">Genesys</button>
+  	<p id="show"></p>
+</section>
+<section class="carbonato column">
+  <h1>Nivel de Carbonato</h1>
+  	<input type="text" id="carb" placeholder="Digite o nivel" />
+  	<input type="button" value="Carbonato" onclick="nivelCarbonato();">
+  <p id="show2"></p>
+</section>
+
+</main>
+</body>
+</html>
