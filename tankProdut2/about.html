@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Nivel Produtos</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!--script type="text/javascript" src="scripts.js"></script-->
+</head>
+<body>
+
+<main class="row">
+<header>
+	<h1><span class="mainHeader">Controlo</span> de Produto Quimico</h1>
+</header>
+
+<nav>
+	<ul>
+		<li><a href="#" class="selected tabs">Acerca</a></li>
+		<li><a href="index.html" class="tabs">Calcular</a></li>
+	</ul>
+</nav>
+
+<section class="genesys column">
+	<div class="section-group">
+		<h1 class="produto about">Controlo de Nível de Soluções Químicas</h1>
+		<p class="about-text">Instrumento de controlo de dosagem de produto químico, tendo como objetivo analizar
+			a quantidade de produto químico injetada pelas bombas de dosagem durante um determinado
+			periodo de tempo. Basicamente uma calculadora para os produtos <em>Genesys</em>, <em>Hipoclorito de 
+			Sódio</em> e <em>Carbonato de Cálcio</em> em função do volume dos respetivos depósitos.</p>
+  	</div>
+</section>
+
+</main>
+
+<script>
+	$("a.tabs").on("click", function() {
+		$("a.selected").removeClass("selected");
+		$(this).addClass("selected");
+	});
+</script>
+
+</body>
+</html>

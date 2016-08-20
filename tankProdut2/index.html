@@ -14,14 +14,21 @@
 	<h1><span class="mainHeader">Controlo</span> de Produto Quimico</h1>
 </header>
 
+<nav>
+	<ul>
+		<li><a href="about.html" class="tabs">Acerca</a></li>
+		<li><a href="#" class="selected tabs">Calcular</a></li>
+	</ul>
+</nav>
+
 <section class="genesys column">
 	<div class="section-group">
-		<h1 class="produto">Genesys</h1>
+		<h1 class="produto">Genesys ou Cloro</h1>
 		<form class="inputs" id="chemicalsInputs">
-			<label><input type="radio" name="produtname" id="genesys" value="genesys" checked="checked">Gen</label> 
-			<label><input type="radio" name="produtname" id="carbonato" value="carbonato">Carb<label>
+			<label><input type="radio" name="produtname" id="genesys" value="genesys" checked="checked">&nbsp;&nbsp;Gen</label> 
+			<label><input type="radio" name="produtname" id="carbonato" value="carbonato">&nbsp;&nbsp;Carb<label>
 			<input type="text" id="niv" placeholder="Digite o nivel" />
-			<input type="button" class="calculate-prod"value="Calculate" onclick="selectProduct();">
+			<input type="button" class="calculate-prod"value="Calcular" onclick="selectProduct();">
 		</form>
   	</div>
   	<p id="show">Digite o valor do nivel do tanque em cm na caixa de texto acima e prima o botão "Calculate"</p>
@@ -39,14 +46,14 @@ var carbonato;
 	 console.log("You clicked me so I'm checked and carbonato is uncheked");
 	 genesys = true;
 	 carbonato = false;
-	 $("h1.produto").text("Genesys");
+	 $("h1.produto").text("Genesys ou Cloro");
  });
   
  $("input#carbonato").on("click", function() {
 	 console.log("You clicked me so I'm checked and genesys is unchecked");
 	 genesys = false;
 	 carbonato = true;
-	 $("h1.produto").text("Carbonato");
+	 $("h1.produto").text("Carbonato de Cálcio");
  });
   
   console.log ("genesys = "+ genesys);
@@ -104,6 +111,12 @@ function selectProduct() {
 		nivelCarbonato();
 	}
 }
+
+$("a.tabs").on("click", function() {
+	$("a.selected").removeClass("selected");
+	$(this).addClass("selected");
+});
+
 
 </script>
 
