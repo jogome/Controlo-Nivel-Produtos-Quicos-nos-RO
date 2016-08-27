@@ -1,10 +1,52 @@
 body {
-	background-color: #B6C1C3;
+	min-width: 800px;
+	background-color: #E2E9EE/*#B6C1C3*/;
 }
 
-header {
+
+nav {
 	width: 100%;
-	height: 4em;
+	margin: 0 auto;
+	border: none;
+}
+
+nav.navbar {
+	border: none;
+	border-bottom: 1px solid #1E7299;
+}
+
+.navbar-collapse, .navbar-header {
+	background-color: #2E3438;
+}
+
+
+nav .navbar-brand span.mainHeader { /* The brand */
+	font-size: 32px;
+	color: #A03D27;
+}
+
+
+a.selected {
+	background: #2F4351;
+}
+
+
+div.main {
+	width: 60%;
+	margin: 0 auto;
+	background-color: #1B1813 /*#070808*/;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	padding-top: 0em;
+	padding-bottom: 2em;
+	border: 1px solid #E2E9EE;
+	box-shadow: 5px 5px 10px #2F4351, -5px 5px 10px #2F4351;
+}
+
+
+.header {
+	width: 100%;
+	height: 50px;
 	margin: 0 auto;
 	background-color: #2E3438;
 	border-top-left-radius: 10px;
@@ -12,80 +54,39 @@ header {
 	border-bottom: 1px solid #872626; 
 }
  
+ 
 h1 span.mainHeader  {
-	color: #A03D27;
+	color: #466472;
 	font-size: 1.5em;
 }
 
 
-main {
-	
-	width: 60%;
-	min-width: 800px;
-	/*height: 400px;*/
-	margin: 0 auto;
-	background-color: #070808;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-	padding-top: 0em;
-	padding-bottom: .5em;
-
+.calculator {
+	margin-top: 4em;
 }
 
-/*////////// NAVIGATION  */
-
-nav ul {
-	margin-left: -1em;
-}
-
-nav ul li {
-	display: inline-block;
-	list-style: none; 
-}
-
-nav ul li a {
-	text-decoration: none;
-	padding: .2em .7em .5em .7em;
-	background: #2F4351;
-	border-top-left-radius: 30px;
-	border-top-right-radius: 10px;
-	color: #5E7682; /*color: #A03D27;*/
-}
-
-
-nav ul li a.selected {
-	background: #2E3438;
-	/*color: #A03D27;*/
-}
-
-
-/* /End Navigation*/
 
 section.column {
 	background-color: #2E3438;
-	width: 90%;
-	height: 10em;
-	position: relative;
-	margin: 1em auto;
-	/*min-height: 8em;*/
 	padding: 1em;
 	border-radius: 1em;
 	border-top-left-radius: 0;
-	margin-top: -22px;
+	
 }
 
-section div.section-group {
-	margin-top: -1em;
+div.section-group {
+	padding-top: 2em;
+	padding-left: 10em; 
 }
 
 
-header h1 {
-	text-align: left;
-	color: #5E7682;
+h1.header {
+	text-align: center;
 	font-size: 1.4em;
 	font-weight: normal;
 	padding: 0.5em 0 0.5em 1em;
 	}
+	
 
 h1 {
 	font-family: sans-serif;
@@ -102,7 +103,7 @@ h1 {
 
 
 h1.produto {
-	font-size: 1.2em;
+	font-size: 1.5em;
 	font-weight: normal;
 	padding-bottom: 1em;
 }
@@ -117,7 +118,7 @@ h1.about {
 
 
 p {
-	font-size: 1em;
+	font-size: 1.5em;
 	margin-top: 2em;
 	/*color: #A1A4A5;*/
 	font-weight: normal;
@@ -138,9 +139,9 @@ form.inputs {
 }
 	
 input[type="text"] {
-	width: 45%;
-	height: 30px;
-	font-size: 1em;
+	width: 30%;
+	height: 45px;
+	font-size: 2em;
 	text-align: center;
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
@@ -149,13 +150,13 @@ input[type="text"] {
 }
 
 input[type="button"] {
-	height: 37px;
-	font-size: 1em;
+	height: 45px;
+	font-size: 1.2em;
 	background-color: #872626;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
 	color: #A1A4A5;
-	vertical-align: 0px;
+	vertical-align: 3px;
 }
 
 input[type="button"]:hover {
@@ -184,10 +185,65 @@ input[type=radio] {
  input[type=radio]#carbonato {
 	margin-left: 3em;
  }
+ 
+ div.footer {
+	height: 4em;
+	margin-top: 5px;
+	color: #fff;
+	/*background-color: #2E3438;*/
+ }
+ 
+ div.footer p {
+	font-size: 1em;
+	color: #466472;
+	padding: 0px 0px 0px 10px;
+ }
+
+
+@media screen and (min-width: 400px) {
+	div.main {
+		width: 100%;
+	}
+ 
+	input[type=radio]#carbonato {
+		
+	}
+	
+	input[type=radio]#genesys {
+		margin-left: -4em;
+	}
+ 
+	input[type="text"] {
+	
+	}
+
+ 
+}
+
+
+@media screen and (min-width: 1000px) {
+	div.main {
+		width: 80%;
+	}
+
+}
+
 
 @media screen and (min-width: 1300px) {
+	div.main {
+		width: 70%;
+	}
+	
 	nav ul {
 		margin-left: -0.3em;
 	}
 
+}
+
+
+@media screen and (min-width: 1500px) {
+	div.main {
+		width: 60%;
+	}
+	
 }

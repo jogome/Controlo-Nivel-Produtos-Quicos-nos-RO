@@ -3,38 +3,65 @@
 <head>
   <meta charset="utf-8">
   <title>Nivel Produtos</title>
+  <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
   <link rel="stylesheet" href="styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!--script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script-->
   <!--script type="text/javascript" src="scripts.js"></script-->
 </head>
 <body>
-
-<main class="row">
-<header>
-	<h1><span class="mainHeader">Controlo</span> de Produto Quimico</h1>
-</header>
-
-<nav>
-	<ul>
-		<li><a href="about.html" class="tabs">Acerca</a></li>
-		<li><a href="#" class="selected tabs">Calcular</a></li>
-	</ul>
-</nav>
-
-<section class="genesys column">
-	<div class="section-group">
-		<h1 class="produto">Genesys ou Cloro</h1>
-		<form class="inputs" id="chemicalsInputs">
-			<label><input type="radio" name="produtname" id="genesys" value="genesys" checked="checked">&nbsp;&nbsp;Gen</label> 
-			<label><input type="radio" name="produtname" id="carbonato" value="carbonato">&nbsp;&nbsp;Carb<label>
-			<input type="text" id="niv" placeholder="Digite o nivel" />
-			<input type="button" class="calculate-prod"value="Calcular" onclick="selectProduct();">
-		</form>
-  	</div>
-  	<p id="show">Digite o valor do nivel do tanque em cm na caixa de texto acima e prima o botão "Calculate"</p>
-</section>
-
-</main>
+<div class="container main">
+	
+	
+	<nav class="navbar navbar-default  main-navbar">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">
+				<span class="mainHeader">Controlo</span> de Produto Quimico</a>
+			</div> <!-- / navbar-header -->
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav pull-right">
+				<li>
+					<a href="about.html" class="tabs">Home</a>
+				</li>
+				<li>
+					<a href="#" class="selected tabs">Calcular</a>
+				</li>
+			</ul> <!-- / navbar-nav -->
+		</div> <!-- / navbar-collapse -->
+	</nav>
+		
+	
+	
+	<div class="row calculator">
+		<div class="col-md-12">
+			<section class="genesys column">
+				<h1 class="header"><span class="mainHeader">Calcular</span>volume</h1>
+				<div class="section-group">
+					<h1 class="produto">Genesys ou Cloro</h1>
+					<form class="inputs" id="chemicalsInputs">
+						<label><input type="radio" name="produtname" id="genesys" value="genesys" checked="checked">&nbsp;&nbsp;Gen</label> 
+						<label><input type="radio" name="produtname" id="carbonato" value="carbonato">&nbsp;&nbsp;Carb<label>
+						<input type="text" id="niv" placeholder="Nivel" />
+						<input type="button" class="calculate-prod"value="Calcular" onclick="selectProduct();">
+					</form>
+				</div>
+				<p id="show">Digite o valor do nivel do tanque em cm na caixa de texto acima e prima o botão "Calculate"</p>
+			</section>
+		</div>
+	</div> <!-- / row -->
+	
+	<div class="row">
+		<div class="col-md-12 footer">
+			<p class="copy">&copy; João Gomes da Graça</p>
+		</div>
+	</div>
+</div> <!--/ container -->
 
 
 <script>
@@ -77,7 +104,7 @@ function Produtos(tipo, perimetro) {
         var vol = Math.PI * Math.pow(this.getRadius(), 2) * altura;
         var vol_liters = vol.toFixed(3) * 1000;
         // In Liters
-        return "O recipiente contém " + vol_liters + " litros de " + this.tipo;
+        return "O recipiente contém " + "<b>" + vol_liters +  "</b>" + " litros de " + this.tipo;
     };
     
 }
@@ -111,12 +138,31 @@ function selectProduct() {
 		nivelCarbonato();
 	}
 }
+/*
+$("a.calculate").on("click", function() {
+	console.log("you clicked on me! calculate!!!");
+	$("a.calculate").addClass("selected");
+	$("a.about-page").removeClass("selected");
+});
+
+$("a.about-page").on("click", function() {
+	console.log("you clicked on me! about!!!");
+	$("a.about-page").addClass("selected");
+	$("a.calculate").removeClass("selected");
+});
+*/
 
 $("a.tabs").on("click", function() {
+		console.log("you clicked on me! home!!!");
+		$("a.selected").removeClass("selected");
+		$(this).addClass("selected");
+	});
+	
+$("a.tabs1").on("click", function() {
+	console.log("you clicked on me! calculate!!!");
 	$("a.selected").removeClass("selected");
 	$(this).addClass("selected");
 });
-
 
 </script>
 
